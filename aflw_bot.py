@@ -190,7 +190,6 @@ def format_full_lineup(positions: list) -> str:
 def diff_and_alert(round_number: int, matches: list) -> None:
     state = load_state()
     any_change = False
-    announcement_pinged = False       # only the first announcement embed in a run pings the role
     all_late_changes = []             # collected across ALL matches this poll, posted as one message
 
     for entry in matches:
@@ -254,14 +253,13 @@ def diff_and_alert(round_number: int, matches: list) -> None:
                 title=f"📣 Team sheet{'s' if len(newly_announced) > 1 else ''} announced — {match_name}",
                 description="\n\n".join(sections),
                 color=0x2ECC71,
-                ping=not announcement_pinged,
+                ping=False,  # sheets being posted isn't urgent enough to @ the role
             )
-            announcement_pinged = True
             any_change = True
 
     # --- ALL late changes this poll, across every match, as ONE post with ONE ping ---
     if all_late_changes:
-        # A pure "roster cut" batch: every affected team lost players with nobody replacing
+        # A pure "team cut" batch: every affected team lost players with nobody replacing
         # them (the signature of the Friday extended-bench trim). If the whole batch looks
         # like that, format it as a dedicated "Team cuts" round-up instead of generic
         # late-change language. Any batch that includes a genuine in/out swap (an actual
@@ -282,6 +280,7 @@ def diff_and_alert(round_number: int, matches: list) -> None:
             title=title,
             description="\n\n".join(sections),
             color=0xE67E22,
+            ping=not is_pure_cuts,  # only genuine swaps (real late changes) ping — bench trims don't
         )
         any_change = True
 
@@ -356,6 +355,7 @@ def test_team_cuts() -> None:
         title="✂️ [TEST] Team cuts",
         description="\n\n".join(sections),
         color=0xE67E22,
+        ping=False,
         banner=(
             "⚠️ **THIS IS A TEST — these players have NOT actually been cut.** ⚠️\n"
             "This is a simulated preview of the format, using real players' names."
@@ -374,7 +374,6 @@ def force_announce(round_number: int, matches: list) -> None:
     """
     state = load_state()
     sent_any = False
-    announcement_pinged = False
 
     for entry in matches:
         match_info = entry["match"]
@@ -408,9 +407,8 @@ def force_announce(round_number: int, matches: list) -> None:
                 title=f"📣 [TEST] Team sheet announced — {match_name}",
                 description="\n\n".join(sections),
                 color=0x2ECC71,
-                ping=not announcement_pinged,
+                ping=False,
             )
-            announcement_pinged = True
             sent_any = True
 
     save_state(state)
@@ -444,7 +442,7 @@ def send_discord_alert(title: str, description: str, color: int = 0x00539F, ping
     if resp.status_code >= 300:
         log.error("Discord post failed: %s %s", resp.status_code, resp.text)
     else:
-        log.info("Posted: %s", title)
+        log.info("Posted: %s (pinged=%s)", title, bool(DISCORD_ROLE_ID and ping))
 
 
 # -------------------------------------------------------------------------
