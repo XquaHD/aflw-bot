@@ -37,6 +37,6 @@ jobs:
         run: |
           git config user.name "aflw-bot"
           git config user.email "aflw-bot@users.noreply.github.com"
-          git add --ignore-unmatch lineup_state.json round_pointer.json
+          git add lineup_state.json round_pointer.json
           git diff --quiet --cached || git commit -m "Update lineup state [skip ci]"
           git push
