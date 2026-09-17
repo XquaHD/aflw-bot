@@ -109,6 +109,7 @@ def get_active_round() -> tuple[int, list]:
     if data:
         all_concluded = all(m["match"]["status"] == "CONCLUDED" for m in data)
         if not all_concluded:
+            save_round_pointer(pointer)
             return pointer, data
         # current round is done — try advancing
         next_data = fetch_round(pointer + 1)
@@ -117,6 +118,7 @@ def get_active_round() -> tuple[int, list]:
             return pointer + 1, next_data
         # next round not published yet (e.g. mid-week before fixture drops) —
         # keep serving the concluded round; diffing will just find no changes
+        save_round_pointer(pointer)
         return pointer, data
 
     # stored round returned nothing (e.g. season rollover) — try stepping back
@@ -125,6 +127,7 @@ def get_active_round() -> tuple[int, list]:
         save_round_pointer(pointer - 1)
         return pointer - 1, prev_data
 
+    save_round_pointer(pointer)
     log.warning("Could not resolve an active round near pointer %s", pointer)
     return pointer, []
 
@@ -262,8 +265,9 @@ def diff_and_alert(round_number: int, matches: list) -> None:
             )
             any_change = True
 
+    save_state(state)
     if any_change:
-        save_state(state)
+        log.info("Round %s: %s change(s) posted.", round_number, "some")
     else:
         log.info("Round %s: no changes.", round_number)
 
