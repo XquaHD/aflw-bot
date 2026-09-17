@@ -190,6 +190,8 @@ def format_full_lineup(positions: list) -> str:
 def diff_and_alert(round_number: int, matches: list) -> None:
     state = load_state()
     any_change = False
+    announcement_pinged = False       # only the first announcement embed in a run pings the role
+    all_late_changes = []             # collected across ALL matches this poll, posted as one message
 
     for entry in matches:
         match_info = entry["match"]
@@ -198,7 +200,6 @@ def diff_and_alert(round_number: int, matches: list) -> None:
         match_id = match_info["matchId"]
 
         newly_announced = []   # list of (team_name, team_dict) that just went FINAL this poll
-        late_changed = []      # list of (team_name, new_ins, new_outs) with fresh changes
 
         for side in ("homeTeam", "awayTeam"):
             team = roster.get(side)
@@ -209,21 +210,22 @@ def diff_and_alert(round_number: int, matches: list) -> None:
             key = f"{match_id}:{team['teamId']}"
 
             prev = state.get(key)
-            current_status = team["teamStatus"]
+            current_positions = team.get("positions", [])
             current_ins = team.get("ins", [])
             current_outs = team.get("outs", [])
+            is_announced = len(current_positions) > 0
 
             new_record = {
-                "teamStatus": current_status,
+                "announced": is_announced,
                 "ins": current_ins,
                 "outs": current_outs,
             }
 
-            if current_status != "FINAL_TEAM":
+            if not is_announced:
                 state[key] = new_record
                 continue
 
-            if prev is None or prev.get("teamStatus") != "FINAL_TEAM":
+            if prev is None or not prev.get("announced"):
                 newly_announced.append((team_name, team))
             else:
                 prev_in_ids = {i["player"]["playerId"] for i in prev.get("ins", [])}
@@ -233,7 +235,9 @@ def diff_and_alert(round_number: int, matches: list) -> None:
                 new_outs = [o for o in current_outs if o["player"]["playerId"] not in prev_out_ids]
 
                 if new_ins or new_outs:
-                    late_changed.append((team_name, new_ins, new_outs))
+                    all_late_changes.append(
+                        {"match_name": match_name, "team_name": team_name, "ins": new_ins, "outs": new_outs}
+                    )
 
             state[key] = new_record
 
@@ -250,20 +254,36 @@ def diff_and_alert(round_number: int, matches: list) -> None:
                 title=f"📣 Team sheet{'s' if len(newly_announced) > 1 else ''} announced — {match_name}",
                 description="\n\n".join(sections),
                 color=0x2ECC71,
+                ping=not announcement_pinged,
             )
+            announcement_pinged = True
             any_change = True
 
-        # --- one combined embed per match for late changes ---
-        if late_changed:
-            sections = []
-            for team_name, new_ins, new_outs in late_changed:
-                sections.append(f"__**{team_name}**__\n{format_changes_block(new_ins, new_outs)}")
-            send_discord_alert(
-                title=f"🔄 Late change{'s' if len(late_changed) > 1 else ''} — {match_name}",
-                description="\n\n".join(sections),
-                color=0xE67E22,
+    # --- ALL late changes this poll, across every match, as ONE post with ONE ping ---
+    if all_late_changes:
+        # A pure "roster cut" batch: every affected team lost players with nobody replacing
+        # them (the signature of the Friday extended-bench trim). If the whole batch looks
+        # like that, format it as a dedicated "Team cuts" round-up instead of generic
+        # late-change language. Any batch that includes a genuine in/out swap (an actual
+        # replacement, e.g. a late injury) falls back to the normal "Late changes" framing.
+        is_pure_cuts = all(not c["ins"] for c in all_late_changes) and any(
+            c["outs"] for c in all_late_changes
+        )
+
+        sections = []
+        for c in all_late_changes:
+            sections.append(
+                f"__**{c['team_name']}**__  _{c['match_name']}_\n"
+                f"{format_changes_block(c['ins'], c['outs'])}"
             )
-            any_change = True
+
+        title = "✂️ Team cuts" if is_pure_cuts else "🔄 Late changes"
+        send_discord_alert(
+            title=title,
+            description="\n\n".join(sections),
+            color=0xE67E22,
+        )
+        any_change = True
 
     save_state(state)
     if any_change:
@@ -272,23 +292,153 @@ def diff_and_alert(round_number: int, matches: list) -> None:
         log.info("Round %s: no changes.", round_number)
 
 
+def test_team_cuts() -> None:
+    """
+    One-off test: simulates a Friday-style bench trim using REAL current
+    players (last 3 named on each Sunday match's 8-man interchange), sends
+    it as a single "Team cuts" post with a loud disclaimer, and touches
+    NO state at all — completely inert with respect to real polling.
+    """
+    round_number, matches = get_active_round()
+    if not matches:
+        log.warning("No match data available for test-cuts.")
+        return
+
+    import datetime
+
+    sunday_matches = []
+    for entry in matches:
+        start = entry["match"].get("venueLocalStartTime")
+        if not start:
+            continue
+        try:
+            day = datetime.datetime.fromisoformat(start).weekday()  # Monday=0 ... Sunday=6
+        except ValueError:
+            continue
+        if day == 6:
+            sunday_matches.append(entry)
+
+    if not sunday_matches:
+        log.warning("No Sunday matches found in round %s — nothing to simulate.", round_number)
+        return
+
+    fake_changes = []
+    for entry in sunday_matches:
+        match_name = entry["match"]["name"]
+        roster = entry["matchRoster"]
+        for side in ("homeTeam", "awayTeam"):
+            team = roster.get(side)
+            if not team:
+                continue
+            int_players = [p for p in team.get("positions", []) if p["position"] == "INT"]
+            last_three = int_players[-3:]
+            if not last_three:
+                continue
+            fake_outs = [{"reason": "Omitted", "player": p["player"]} for p in last_three]
+            fake_changes.append(
+                {
+                    "match_name": match_name,
+                    "team_name": team["teamName"]["teamName"],
+                    "ins": [],
+                    "outs": fake_outs,
+                }
+            )
+
+    if not fake_changes:
+        log.warning("No interchange data available to simulate cuts from.")
+        return
+
+    sections = []
+    for c in fake_changes:
+        sections.append(f"__**{c['team_name']}**__  _{c['match_name']}_\n{format_changes_block(c['ins'], c['outs'])}")
+
+    send_discord_alert(
+        title="✂️ [TEST] Team cuts",
+        description="\n\n".join(sections),
+        color=0xE67E22,
+        banner=(
+            "⚠️ **THIS IS A TEST — these players have NOT actually been cut.** ⚠️\n"
+            "This is a simulated preview of the format, using real players' names."
+        ),
+    )
+    log.info("Test team-cuts message sent for round %s.", round_number)
+
+
+def force_announce(round_number: int, matches: list) -> None:
+    """
+    Sends the "just announced" embed for every currently-FINAL_TEAM side in
+    the round, regardless of what's already stored in state — a one-off
+    test/demo tool, not part of normal polling. Afterwards it re-syncs state
+    to the current data so the NEXT real poll won't think these are new
+    again and re-post them.
+    """
+    state = load_state()
+    sent_any = False
+    announcement_pinged = False
+
+    for entry in matches:
+        match_info = entry["match"]
+        roster = entry["matchRoster"]
+        match_name = match_info["name"]
+        match_id = match_info["matchId"]
+
+        sections = []
+        for side in ("homeTeam", "awayTeam"):
+            team = roster.get(side)
+            if not team or not team.get("positions"):
+                continue
+
+            team_name = team["teamName"]["teamName"]
+            sections.append(
+                f"__**{team_name}**__\n"
+                f"{format_changes_block(team.get('ins', []), team.get('outs', []))}\n\n"
+                f"{format_full_lineup(team.get('positions', []))}"
+            )
+
+            # re-sync state so the real poller doesn't re-fire on this later
+            key = f"{match_id}:{team['teamId']}"
+            state[key] = {
+                "announced": True,
+                "ins": team.get("ins", []),
+                "outs": team.get("outs", []),
+            }
+
+        if sections:
+            send_discord_alert(
+                title=f"📣 [TEST] Team sheet announced — {match_name}",
+                description="\n\n".join(sections),
+                color=0x2ECC71,
+                ping=not announcement_pinged,
+            )
+            announcement_pinged = True
+            sent_any = True
+
+    save_state(state)
+    if not sent_any:
+        log.warning("No FINAL_TEAM sides found in round %s — nothing to test-announce.", round_number)
+    else:
+        log.info("Test announcement sent for round %s.", round_number)
+
+
 # -------------------------------------------------------------------------
 # Discord posting
 # -------------------------------------------------------------------------
 
-def send_discord_alert(title: str, description: str, color: int = 0x00539F) -> None:
+def send_discord_alert(title: str, description: str, color: int = 0x00539F, ping: bool = True, banner: str = None) -> None:
     # Discord embed descriptions cap at 4096 chars; trim defensively.
     if len(description) > 4000:
         description = description[:3990] + "\n… (truncated)"
 
     payload = {"embeds": [{"title": title, "description": description, "color": color}]}
 
-    if DISCORD_ROLE_ID:
-        # Role mentions only ping if they're in the top-level "content" field
-        # (mentions inside embeds are NOT pinged by Discord), and only if
-        # allowed_mentions explicitly permits "roles".
-        payload["content"] = f"<@&{DISCORD_ROLE_ID}>"
-        payload["allowed_mentions"] = {"parse": ["roles"]}
+    content_parts = []
+    if banner:
+        content_parts.append(banner)
+    if DISCORD_ROLE_ID and ping:
+        content_parts.append(f"<@&{DISCORD_ROLE_ID}>")
+    if content_parts:
+        payload["content"] = "\n".join(content_parts)
+        payload["allowed_mentions"] = {"parse": ["roles"]} if (DISCORD_ROLE_ID and ping) else {"parse": []}
 
     resp = requests.post(DISCORD_WEBHOOK_URL, json=payload, timeout=10)
     if resp.status_code >= 300:
@@ -312,7 +462,19 @@ def run_once() -> None:
 if __name__ == "__main__":
     import sys
 
-    if "--once" in sys.argv:
+    if "--test-announce" in sys.argv:
+        # One-off: re-send today's already-announced sheets as a live test,
+        # then re-sync state so normal polling doesn't double-post them.
+        round_number, matches = get_active_round()
+        if matches:
+            force_announce(round_number, matches)
+        else:
+            log.warning("No match data available for test announce.")
+    elif "--test-cuts" in sys.argv:
+        # One-off: simulate the Friday team-cuts format using real players,
+        # clearly marked as fake. Touches no state.
+        test_team_cuts()
+    elif "--once" in sys.argv:
         # Single-shot mode, used by GitHub Actions (or any cron-style scheduler)
         # that starts the process, runs one poll, and exits.
         try:
