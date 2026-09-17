@@ -9,7 +9,12 @@ on:
     # specifically in the 5:45-6:00pm ACST window, a persistent host (like
     # the Railway option discussed earlier) will be more reliable for that.
     - cron: "*/5 * * * *"
-  workflow_dispatch: {}   # lets you manually trigger a run from the Actions tab, for testing
+  workflow_dispatch:      # lets you manually trigger a run from the Actions tab, for testing
+    inputs:
+      dry_run:
+        description: "Dry run (log what would post to Discord, but don't actually post anything)"
+        type: boolean
+        default: false
 
 permissions:
   contents: write   # needed so the workflow can commit updated state files back
@@ -31,6 +36,7 @@ jobs:
           DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
           DISCORD_ROLE_ID: ${{ secrets.DISCORD_ROLE_ID }}
           AFL_MIS_TOKEN: ${{ secrets.AFL_MIS_TOKEN }}
+          DRY_RUN: ${{ github.event.inputs.dry_run }}
         run: python3 aflw_bot.py --once
 
       - name: Save state back to the repo
