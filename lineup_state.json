@@ -1,6 +1,6 @@
 {
   "CD_M20262640601:CD_T9407": {
-    "teamStatus": "PROVISIONAL_TEAM",
+    "announced": true,
     "ins": [
       {
         "reason": null,
@@ -59,7 +59,7 @@
     ]
   },
   "CD_M20262640601:CD_T8466": {
-    "teamStatus": "PROVISIONAL_TEAM",
+    "announced": true,
     "ins": [
       {
         "reason": null,
@@ -144,7 +144,7 @@
     ]
   },
   "CD_M20262640602:CD_T8097": {
-    "teamStatus": "PROVISIONAL_TEAM",
+    "announced": true,
     "ins": [
       {
         "reason": null,
@@ -203,7 +203,7 @@
     ]
   },
   "CD_M20262640602:CD_T8467": {
-    "teamStatus": "PROVISIONAL_TEAM",
+    "announced": true,
     "ins": [
       {
         "reason": null,
@@ -236,7 +236,7 @@
     ]
   },
   "CD_M20262640603:CD_T7386": {
-    "teamStatus": "PROVISIONAL_TEAM",
+    "announced": true,
     "ins": [
       {
         "reason": null,
@@ -269,7 +269,7 @@
     ]
   },
   "CD_M20262640603:CD_T8096": {
-    "teamStatus": "PROVISIONAL_TEAM",
+    "announced": true,
     "ins": [
       {
         "reason": null,
@@ -354,7 +354,7 @@
     ]
   },
   "CD_M20262640604:CD_T9409": {
-    "teamStatus": "PROVISIONAL_TEAM",
+    "announced": true,
     "ins": [
       {
         "reason": null,
@@ -413,7 +413,7 @@
     ]
   },
   "CD_M20262640604:CD_T9408": {
-    "teamStatus": "PROVISIONAL_TEAM",
+    "announced": true,
     "ins": [
       {
         "reason": null,
@@ -472,7 +472,7 @@
     ]
   },
   "CD_M20262640605:CD_T7886": {
-    "teamStatus": "PROVISIONAL_TEAM",
+    "announced": true,
     "ins": [
       {
         "reason": null,
@@ -531,7 +531,7 @@
     ]
   },
   "CD_M20262640605:CD_T7387": {
-    "teamStatus": "PROVISIONAL_TEAM",
+    "announced": true,
     "ins": [
       {
         "reason": null,
@@ -590,7 +590,7 @@
     ]
   },
   "CD_M20262640606:CD_T7889": {
-    "teamStatus": "PROVISIONAL_TEAM",
+    "announced": true,
     "ins": [
       {
         "reason": null,
@@ -635,7 +635,7 @@
     "outs": []
   },
   "CD_M20262640606:CD_T8788": {
-    "teamStatus": "PROVISIONAL_TEAM",
+    "announced": true,
     "ins": [
       {
         "reason": null,
@@ -707,7 +707,7 @@
     ]
   },
   "CD_M20262640607:CD_T9406": {
-    "teamStatus": "PROVISIONAL_TEAM",
+    "announced": true,
     "ins": [
       {
         "reason": null,
@@ -805,7 +805,7 @@
     ]
   },
   "CD_M20262640607:CD_T8786": {
-    "teamStatus": "PROVISIONAL_TEAM",
+    "announced": true,
     "ins": [
       {
         "reason": null,
@@ -929,7 +929,7 @@
     ]
   },
   "CD_M20262640608:CD_T8796": {
-    "teamStatus": "PROVISIONAL_TEAM",
+    "announced": true,
     "ins": [
       {
         "reason": null,
@@ -1027,7 +1027,7 @@
     ]
   },
   "CD_M20262640608:CD_T8787": {
-    "teamStatus": "PROVISIONAL_TEAM",
+    "announced": true,
     "ins": [
       {
         "reason": null,
@@ -1099,7 +1099,7 @@
     ]
   },
   "CD_M20262640609:CD_T7887": {
-    "teamStatus": "PROVISIONAL_TEAM",
+    "announced": true,
     "ins": [
       {
         "reason": null,
@@ -1197,7 +1197,7 @@
     ]
   },
   "CD_M20262640609:CD_T8098": {
-    "teamStatus": "PROVISIONAL_TEAM",
+    "announced": true,
     "ins": [
       {
         "reason": null,
