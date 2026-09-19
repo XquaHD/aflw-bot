@@ -36,6 +36,7 @@ log = logging.getLogger("aflw_bot")
 
 DISCORD_WEBHOOK_URL = os.environ["DISCORD_WEBHOOK_URL"]
 DISCORD_ROLE_ID = os.environ.get("DISCORD_ROLE_ID")  # optional — role to @ping, e.g. "123456789012345678"
+DISCORD_ADMIN_ID = os.environ.get("DISCORD_ADMIN_ID")  # optional — YOUR Discord user ID, pinged only on bot error/recovery
 
 SEASON_CODE = "2026264"          # the "S2026264" bit seen in competitionId
 API_BASE = "https://api.afl.com.au/cfs/afl/matchRosters/round"
@@ -43,6 +44,7 @@ API_BASE = "https://api.afl.com.au/cfs/afl/matchRosters/round"
 STATE_DIR = Path(__file__).parent
 STATE_FILE = STATE_DIR / "lineup_state.json"          # last-seen ins/outs per team, for diffing
 ROUND_POINTER_FILE = STATE_DIR / "round_pointer.json"  # {"round": 6}
+HEALTH_FILE = STATE_DIR / "api_health.json"            # {"broken": bool} — tracks AFL API reachability
 
 CURRENT_ROUND_HINT = 6  # only used the very first time round_pointer.json doesn't exist
 
@@ -68,6 +70,13 @@ REASON_EMOJI = {
 # Round tracking — this is what makes it work every week with no input
 # -------------------------------------------------------------------------
 
+class FetchError(Exception):
+    """Raised when the AFL API fetch fails for a reason that isn't just
+    'this round isn't published yet' (a plain 404). A 401/timeout/connection
+    error means something is actually broken (most likely an expired
+    AFL_MIS_TOKEN) and should trigger the failure-notification path."""
+
+
 def round_id(round_number: int) -> str:
     return f"CD_R{SEASON_CODE}{round_number:02d}"
 
@@ -80,9 +89,13 @@ def fetch_round(round_number: int) -> Optional[list]:
             return None
         resp.raise_for_status()
         return resp.json()
-    except requests.RequestException:
+    except requests.RequestException as e:
         log.exception("Failed fetching round %s", round_number)
-        return None
+        status = getattr(getattr(e, "response", None), "status_code", None)
+        detail = f"round {round_number}: {e}"
+        if status:
+            detail += f" (HTTP {status})"
+        raise FetchError(detail) from e
 
 
 def load_round_pointer() -> int:
@@ -144,6 +157,53 @@ def load_state() -> dict:
 
 def save_state(state: dict) -> None:
     STATE_FILE.write_text(json.dumps(state, indent=2))
+
+
+# -------------------------------------------------------------------------
+# API health tracking — notify once on failure, once on recovery, no spam
+# -------------------------------------------------------------------------
+
+def load_health() -> dict:
+    if HEALTH_FILE.exists():
+        return json.loads(HEALTH_FILE.read_text())
+    return {"broken": False}
+
+
+def save_health(broken: bool) -> None:
+    HEALTH_FILE.write_text(json.dumps({"broken": broken}))
+
+
+def mark_failure(detail: str) -> None:
+    health = load_health()
+    if not health.get("broken"):
+        send_discord_alert(
+            title="⚠️ Bot error — AFL data feed unreachable",
+            description=(
+                "The bot couldn't reach AFL's API this run:\n\n"
+                f"`{detail}`\n\n"
+                "This is almost always an expired `AFL_MIS_TOKEN` — it needs refreshing "
+                "from DevTools and re-saving as a GitHub secret.\n\n"
+                "No further alerts will be sent while it's still broken — you'll get a "
+                "✅ message here once it's fixed."
+            ),
+            color=0xE74C3C,
+            ping=False,
+            mention_user_id=DISCORD_ADMIN_ID,
+        )
+    save_health(True)
+
+
+def mark_recovery() -> None:
+    health = load_health()
+    if health.get("broken"):
+        send_discord_alert(
+            title="✅ Bot back online",
+            description="The AFL data feed is reachable again — polling has resumed normally.",
+            color=0x2ECC71,
+            ping=False,
+            mention_user_id=DISCORD_ADMIN_ID,
+        )
+    save_health(False)
 
 
 def player_full_name(p: dict) -> str:
@@ -422,7 +482,17 @@ def force_announce(round_number: int, matches: list) -> None:
 # Discord posting
 # -------------------------------------------------------------------------
 
-def send_discord_alert(title: str, description: str, color: int = 0x00539F, ping: bool = True, banner: str = None) -> None:
+DRY_RUN = os.environ.get("DRY_RUN", "").lower() in ("1", "true", "yes")
+
+
+def send_discord_alert(
+    title: str,
+    description: str,
+    color: int = 0x00539F,
+    ping: bool = True,
+    banner: str = None,
+    mention_user_id: str = None,
+) -> None:
     # Discord embed descriptions cap at 4096 chars; trim defensively.
     if len(description) > 4000:
         description = description[:3990] + "\n… (truncated)"
@@ -434,15 +504,32 @@ def send_discord_alert(title: str, description: str, color: int = 0x00539F, ping
         content_parts.append(banner)
     if DISCORD_ROLE_ID and ping:
         content_parts.append(f"<@&{DISCORD_ROLE_ID}>")
+    if mention_user_id:
+        content_parts.append(f"<@{mention_user_id}>")
+
     if content_parts:
         payload["content"] = "\n".join(content_parts)
-        payload["allowed_mentions"] = {"parse": ["roles"]} if (DISCORD_ROLE_ID and ping) else {"parse": []}
+        # Explicit allow-lists rather than {"parse": [...]} so a bot-error ping
+        # can never accidentally fan out into a role/@everyone ping or vice versa.
+        payload["allowed_mentions"] = {
+            "roles": [DISCORD_ROLE_ID] if (DISCORD_ROLE_ID and ping) else [],
+            "users": [mention_user_id] if mention_user_id else [],
+        }
+
+    would_ping = bool((DISCORD_ROLE_ID and ping) or mention_user_id)
+
+    if DRY_RUN:
+        log.info(
+            "[DRY RUN] Would post (pinged=%s): %s\n----- description -----\n%s\n------------------------",
+            would_ping, title, description,
+        )
+        return
 
     resp = requests.post(DISCORD_WEBHOOK_URL, json=payload, timeout=10)
     if resp.status_code >= 300:
         log.error("Discord post failed: %s %s", resp.status_code, resp.text)
     else:
-        log.info("Posted: %s (pinged=%s)", title, bool(DISCORD_ROLE_ID and ping))
+        log.info("Posted: %s (pinged=%s)", title, would_ping)
 
 
 # -------------------------------------------------------------------------
@@ -450,7 +537,12 @@ def send_discord_alert(title: str, description: str, color: int = 0x00539F, ping
 # -------------------------------------------------------------------------
 
 def run_once() -> None:
-    round_number, matches = get_active_round()
+    try:
+        round_number, matches = get_active_round()
+    except FetchError as e:
+        mark_failure(str(e))
+        raise
+    mark_recovery()
     if not matches:
         log.warning("No match data available this cycle (round %s).", round_number)
         return
@@ -479,6 +571,7 @@ if __name__ == "__main__":
             run_once()
         except Exception:
             log.exception("Error during single poll")
+            sys.exit(1)  # non-zero exit -> the Action shows red -> GitHub emails you
     else:
         # Long-running mode, used when you run this directly on your own machine/server.
         POLL_SECONDS = 120
