@@ -40,6 +40,7 @@ DISCORD_ADMIN_ID = os.environ.get("DISCORD_ADMIN_ID")  # optional — YOUR Disco
 
 SEASON_CODE = "2026264"          # the "S2026264" bit seen in competitionId
 API_BASE = "https://api.afl.com.au/cfs/afl/matchRosters/round"
+TOKEN_URL = "https://api.afl.com.au/cfs/afl/WMCTok"  # public endpoint that mints a fresh x-media-mis-token
 
 STATE_DIR = Path(__file__).parent
 STATE_FILE = STATE_DIR / "lineup_state.json"          # last-seen ins/outs per team, for diffing
@@ -48,14 +49,41 @@ HEALTH_FILE = STATE_DIR / "api_health.json"            # {"broken": bool} — tr
 
 CURRENT_ROUND_HINT = 6  # only used the very first time round_pointer.json doesn't exist
 
+# Base headers shared by every AFL API call. The x-media-mis-token is NOT
+# baked in here — it's minted fresh every run via refresh_media_token()
+# below, because the AFL website itself does exactly that (a public,
+# unauthenticated POST to TOKEN_URL) before every request it makes. This
+# means the bot never needs a manually-refreshed token again. AFL_MIS_TOKEN
+# is kept only as a last-resort fallback if that endpoint is ever changed
+# or removed.
 HEADERS = {
     "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 "
                   "(KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36",
     "Referer": "https://www.afl.com.au/",
     "Origin": "https://www.afl.com.au",
     "Accept": "*/*",
-    "x-media-mis-token": os.environ.get("AFL_MIS_TOKEN", ""),
 }
+
+_current_token = None  # set by refresh_media_token() at the start of each run
+
+
+def refresh_media_token() -> None:
+    """Mints a fresh x-media-mis-token the same way afl.com.au itself does:
+    a plain POST to TOKEN_URL, no auth required. Falls back to the
+    AFL_MIS_TOKEN secret only if that call fails for some reason."""
+    global _current_token
+    try:
+        resp = requests.post(TOKEN_URL, headers=HEADERS, timeout=10)
+        resp.raise_for_status()
+        token = resp.json().get("token")
+        if token:
+            _current_token = token
+            log.info("Minted a fresh AFL media token.")
+            return
+        log.warning("Token endpoint responded but had no 'token' field; falling back.")
+    except (requests.RequestException, ValueError):
+        log.warning("Could not mint a fresh AFL media token this run; falling back to AFL_MIS_TOKEN secret.")
+    _current_token = os.environ.get("AFL_MIS_TOKEN", "")
 
 REASON_EMOJI = {
     "Injured": "🩹",
@@ -81,12 +109,19 @@ def round_id(round_number: int) -> str:
     return f"CD_R{SEASON_CODE}{round_number:02d}"
 
 
-def fetch_round(round_number: int) -> Optional[list]:
+def fetch_round(round_number: int, _retried: bool = False) -> Optional[list]:
     url = f"{API_BASE}/{round_id(round_number)}?minimal=true"
+    headers = dict(HEADERS, **{"x-media-mis-token": _current_token or ""})
     try:
-        resp = requests.get(url, headers=HEADERS, timeout=15)
+        resp = requests.get(url, headers=headers, timeout=15)
         if resp.status_code == 404:
             return None
+        if resp.status_code == 401 and not _retried:
+            # Token may have been minted right as the old one rotated out —
+            # mint a new one once and retry before giving up.
+            log.warning("Got 401 fetching round %s — minting a new token and retrying once.", round_number)
+            refresh_media_token()
+            return fetch_round(round_number, _retried=True)
         resp.raise_for_status()
         return resp.json()
     except requests.RequestException as e:
@@ -116,6 +151,7 @@ def get_active_round() -> tuple[int, list]:
     to the next round. Self-heals across seasons starting/ending as
     long as round IDs stay sequential within a season.
     """
+    refresh_media_token()
     pointer = load_round_pointer()
     data = fetch_round(pointer)
 
@@ -173,24 +209,33 @@ def save_health(broken: bool) -> None:
     HEALTH_FILE.write_text(json.dumps({"broken": broken}))
 
 
-def mark_failure(detail: str) -> None:
+def mark_failure(detail: str) -> bool:
+    """Records a failed poll. Returns True only the FIRST time this happens
+    in a streak of failures — callers use that to decide whether to also
+    surface this as a failed run (which triggers GitHub's failure email).
+    Every failure after the first returns False so repeat failures stay
+    silent instead of red-and-emailing on every single poll."""
     health = load_health()
-    if not health.get("broken"):
+    is_new_failure = not health.get("broken")
+    if is_new_failure:
         send_discord_alert(
             title="⚠️ Bot error — AFL data feed unreachable",
             description=(
-                "The bot couldn't reach AFL's API this run:\n\n"
+                "The bot couldn't reach AFL's API this run, even after minting a fresh "
+                "token:\n\n"
                 f"`{detail}`\n\n"
-                "This is almost always an expired `AFL_MIS_TOKEN` — it needs refreshing "
-                "from DevTools and re-saving as a GitHub secret.\n\n"
-                "No further alerts will be sent while it's still broken — you'll get a "
-                "✅ message here once it's fixed."
+                "The bot now auto-refreshes its own AFL access token every run, so this is "
+                "likely something bigger on AFL's end (their token endpoint changed, or the "
+                "site itself is down) rather than a simple expired-token issue.\n\n"
+                "No further alerts (and no more failure emails) will come through while "
+                "it's still broken — you'll get a ✅ message here once it's fixed."
             ),
             color=0xE74C3C,
             ping=False,
             mention_user_id=DISCORD_ADMIN_ID,
         )
     save_health(True)
+    return is_new_failure
 
 
 def mark_recovery() -> None:
@@ -540,8 +585,17 @@ def run_once() -> None:
     try:
         round_number, matches = get_active_round()
     except FetchError as e:
-        mark_failure(str(e))
-        raise
+        is_new_failure = mark_failure(str(e))
+        if is_new_failure:
+            # First failure in a streak: let it propagate so the Action goes
+            # red and GitHub's built-in failure email fires — this is the
+            # one time you actually want to be told.
+            raise
+        # Already broken from a previous poll: log it, but don't fail the
+        # job again — you already got the Discord alert and don't need a
+        # fresh GitHub email every single time this repeats every few minutes.
+        log.warning("Still broken (repeat failure, no new alert): %s", e)
+        return
     mark_recovery()
     if not matches:
         log.warning("No match data available this cycle (round %s).", round_number)
