@@ -685,19 +685,6 @@
       {
         "reason": null,
         "player": {
-          "playerId": "CD_I1023389",
-          "playerName": {
-            "givenName": "Chloe",
-            "surname": "Adams"
-          },
-          "captain": false,
-          "playerJumperNumber": 15,
-          "photoURL": "https://s.afl.com.au/staticfile/AFL Tenant/AFL/Players/ChampIDImages/AFLW/2026264/1023389.png?im=Scale,width=0.6,height=0.6"
-        }
-      },
-      {
-        "reason": null,
-        "player": {
           "playerId": "CD_I1021412",
           "playerName": {
             "givenName": "Maggie",
@@ -706,6 +693,19 @@
           "captain": false,
           "playerJumperNumber": 21,
           "photoURL": "https://s.afl.com.au/staticfile/AFL Tenant/AFL/Players/ChampIDImages/AFLW/2026264/1021412.png?im=Scale,width=0.6,height=0.6"
+        }
+      },
+      {
+        "reason": null,
+        "player": {
+          "playerId": "CD_I1023389",
+          "playerName": {
+            "givenName": "Chloe",
+            "surname": "Adams"
+          },
+          "captain": false,
+          "playerJumperNumber": 15,
+          "photoURL": "https://s.afl.com.au/staticfile/AFL Tenant/AFL/Players/ChampIDImages/AFLW/2026264/1023389.png?im=Scale,width=0.6,height=0.6"
         }
       }
     ],
@@ -829,19 +829,6 @@
       {
         "reason": null,
         "player": {
-          "playerId": "CD_I1009866",
-          "playerName": {
-            "givenName": "Rene",
-            "surname": "Caris"
-          },
-          "captain": false,
-          "playerJumperNumber": 19,
-          "photoURL": "https://s.afl.com.au/staticfile/AFL Tenant/AFL/Players/ChampIDImages/AFLW/2026264/1009866.png?im=Scale,width=0.6,height=0.6"
-        }
-      },
-      {
-        "reason": null,
-        "player": {
           "playerId": "CD_I1026494",
           "playerName": {
             "givenName": "Carys",
@@ -863,6 +850,19 @@
           "captain": false,
           "playerJumperNumber": 18,
           "photoURL": "https://s.afl.com.au/staticfile/AFL Tenant/AFL/Players/ChampIDImages/AFLW/2026264/1048496.png?im=Scale,width=0.6,height=0.6"
+        }
+      },
+      {
+        "reason": null,
+        "player": {
+          "playerId": "CD_I1009866",
+          "playerName": {
+            "givenName": "Rene",
+            "surname": "Caris"
+          },
+          "captain": false,
+          "playerJumperNumber": 19,
+          "photoURL": "https://s.afl.com.au/staticfile/AFL Tenant/AFL/Players/ChampIDImages/AFLW/2026264/1009866.png?im=Scale,width=0.6,height=0.6"
         }
       }
     ],
