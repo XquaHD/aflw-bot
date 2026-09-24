@@ -1126,54 +1126,619 @@
     ]
   },
   "CD_M20262640702:CD_T9406": {
-    "announced": false,
-    "ins": [],
-    "outs": []
+    "announced": true,
+    "ins": [
+      {
+        "reason": null,
+        "player": {
+          "playerId": "CD_I1009976",
+          "playerName": {
+            "givenName": "Maddison",
+            "surname": "Gay"
+          },
+          "captain": false,
+          "playerJumperNumber": 6,
+          "photoURL": "https://s.afl.com.au/staticfile/AFL Tenant/AFL/Players/ChampIDImages/AFLW/2026264/1009976.png?im=Scale,width=0.6,height=0.6"
+        }
+      }
+    ],
+    "outs": [
+      {
+        "reason": "Omitted",
+        "player": {
+          "playerId": "CD_I1025587",
+          "playerName": {
+            "givenName": "Madison",
+            "surname": "Ibrahim"
+          },
+          "captain": false,
+          "playerJumperNumber": 34,
+          "photoURL": "https://s.afl.com.au/staticfile/AFL Tenant/AFL/Players/ChampIDImages/AFLW/2026264/1025587.png?im=Scale,width=0.6,height=0.6"
+        }
+      }
+    ]
   },
   "CD_M20262640702:CD_T8787": {
-    "announced": false,
-    "ins": [],
-    "outs": []
+    "announced": true,
+    "ins": [
+      {
+        "reason": null,
+        "player": {
+          "playerId": "CD_I1021415",
+          "playerName": {
+            "givenName": "Courtney",
+            "surname": "Rowley"
+          },
+          "captain": false,
+          "playerJumperNumber": 5,
+          "photoURL": "https://s.afl.com.au/staticfile/AFL Tenant/AFL/Players/ChampIDImages/AFLW/2026264/1021415.png?im=Scale,width=0.6,height=0.6"
+        }
+      },
+      {
+        "reason": null,
+        "player": {
+          "playerId": "CD_I1023815",
+          "playerName": {
+            "givenName": "Abbygail",
+            "surname": "Bushby"
+          },
+          "captain": false,
+          "playerJumperNumber": 15,
+          "photoURL": "https://s.afl.com.au/staticfile/AFL Tenant/AFL/Players/ChampIDImages/AFLW/2026264/1023815.png?im=Scale,width=0.6,height=0.6"
+        }
+      }
+    ],
+    "outs": [
+      {
+        "reason": "Injured",
+        "player": {
+          "playerId": "CD_I1027611",
+          "playerName": {
+            "givenName": "Zoe",
+            "surname": "Wakfer"
+          },
+          "captain": false,
+          "playerJumperNumber": null,
+          "photoURL": "https://s.afl.com.au/staticfile/AFL Tenant/AFL/Players/ChampIDImages/AFLW/2026264/1027611.png?im=Scale,width=0.6,height=0.6"
+        }
+      },
+      {
+        "reason": "Omitted",
+        "player": {
+          "playerId": "CD_I1027055",
+          "playerName": {
+            "givenName": "Sienna",
+            "surname": "Gerardi"
+          },
+          "captain": false,
+          "playerJumperNumber": 25,
+          "photoURL": "https://s.afl.com.au/staticfile/AFL Tenant/AFL/Players/ChampIDImages/AFLW/2026264/1027055.png?im=Scale,width=0.6,height=0.6"
+        }
+      }
+    ]
   },
   "CD_M20262640703:CD_T7387": {
-    "announced": false,
-    "ins": [],
-    "outs": []
+    "announced": true,
+    "ins": [
+      {
+        "reason": null,
+        "player": {
+          "playerId": "CD_I1015189",
+          "playerName": {
+            "givenName": "Keeley",
+            "surname": "Hardingham"
+          },
+          "captain": false,
+          "playerJumperNumber": 24,
+          "photoURL": "https://s.afl.com.au/staticfile/AFL Tenant/AFL/Players/ChampIDImages/AFLW/2026264/1015189.png?im=Scale,width=0.6,height=0.6"
+        }
+      },
+      {
+        "reason": null,
+        "player": {
+          "playerId": "CD_I1025611",
+          "playerName": {
+            "givenName": "Sarah",
+            "surname": "Poustie"
+          },
+          "captain": false,
+          "playerJumperNumber": 1,
+          "photoURL": "https://s.afl.com.au/staticfile/AFL Tenant/AFL/Players/ChampIDImages/AFLW/2026264/1025611.png?im=Scale,width=0.6,height=0.6"
+        }
+      },
+      {
+        "reason": null,
+        "player": {
+          "playerId": "CD_I1015201",
+          "playerName": {
+            "givenName": "Analea",
+            "surname": "McKee"
+          },
+          "captain": false,
+          "playerJumperNumber": 26,
+          "photoURL": "https://s.afl.com.au/staticfile/AFL Tenant/AFL/Players/ChampIDImages/AFLW/2026264/1015201.png?im=Scale,width=0.6,height=0.6"
+        }
+      }
+    ],
+    "outs": [
+      {
+        "reason": "Injured",
+        "player": {
+          "playerId": "CD_I1012694",
+          "playerName": {
+            "givenName": "Alice",
+            "surname": "Edmonds"
+          },
+          "captain": false,
+          "playerJumperNumber": null,
+          "photoURL": "https://s.afl.com.au/staticfile/AFL Tenant/AFL/Players/ChampIDImages/AFLW/2026264/1012694.png?im=Scale,width=0.6,height=0.6"
+        }
+      },
+      {
+        "reason": "Managed",
+        "player": {
+          "playerId": "CD_I296141",
+          "playerName": {
+            "givenName": "Louise",
+            "surname": "Stephenson"
+          },
+          "captain": false,
+          "playerJumperNumber": null,
+          "photoURL": "https://s.afl.com.au/staticfile/AFL Tenant/AFL/Players/ChampIDImages/AFLW/2026264/296141.png?im=Scale,width=0.6,height=0.6"
+        }
+      },
+      {
+        "reason": "Injured",
+        "player": {
+          "playerId": "CD_I1028464",
+          "playerName": {
+            "givenName": "Dominique",
+            "surname": "Carruthers"
+          },
+          "captain": false,
+          "playerJumperNumber": null,
+          "photoURL": "https://s.afl.com.au/staticfile/AFL Tenant/AFL/Players/ChampIDImages/AFLW/2026264/1028464.png?im=Scale,width=0.6,height=0.6"
+        }
+      }
+    ]
   },
   "CD_M20262640703:CD_T9409": {
-    "announced": false,
-    "ins": [],
-    "outs": []
+    "announced": true,
+    "ins": [
+      {
+        "reason": null,
+        "player": {
+          "playerId": "CD_I1009843",
+          "playerName": {
+            "givenName": "Ellie",
+            "surname": "Hampson"
+          },
+          "captain": false,
+          "playerJumperNumber": 7,
+          "photoURL": "https://s.afl.com.au/staticfile/AFL Tenant/AFL/Players/ChampIDImages/AFLW/2026264/1009843.png?im=Scale,width=0.6,height=0.6"
+        }
+      }
+    ],
+    "outs": [
+      {
+        "reason": "Injured",
+        "player": {
+          "playerId": "CD_I1032555",
+          "playerName": {
+            "givenName": "Grace",
+            "surname": "Parsons"
+          },
+          "captain": false,
+          "playerJumperNumber": null,
+          "photoURL": "https://s.afl.com.au/staticfile/AFL Tenant/AFL/Players/ChampIDImages/AFLW/2026264/1032555.png?im=Scale,width=0.6,height=0.6"
+        }
+      }
+    ]
   },
   "CD_M20262640704:CD_T8096": {
-    "announced": false,
-    "ins": [],
-    "outs": []
+    "announced": true,
+    "ins": [
+      {
+        "reason": null,
+        "player": {
+          "playerId": "CD_I1032580",
+          "playerName": {
+            "givenName": "Tayla",
+            "surname": "McMillan"
+          },
+          "captain": false,
+          "playerJumperNumber": 26,
+          "photoURL": "https://s.afl.com.au/staticfile/AFL Tenant/AFL/Players/ChampIDImages/AFLW/2026264/1032580.png?im=Scale,width=0.6,height=0.6"
+        }
+      },
+      {
+        "reason": null,
+        "player": {
+          "playerId": "CD_I1042236",
+          "playerName": {
+            "givenName": "Aisling",
+            "surname": "Reidy"
+          },
+          "captain": false,
+          "playerJumperNumber": 13,
+          "photoURL": "https://s.afl.com.au/staticfile/AFL Tenant/AFL/Players/ChampIDImages/AFLW/2026264/1042236.png?im=Scale,width=0.6,height=0.6"
+        }
+      }
+    ],
+    "outs": [
+      {
+        "reason": "Omitted",
+        "player": {
+          "playerId": "CD_I1012709",
+          "playerName": {
+            "givenName": "Tara",
+            "surname": "Bohanna"
+          },
+          "captain": false,
+          "playerJumperNumber": 42,
+          "photoURL": "https://s.afl.com.au/staticfile/AFL Tenant/AFL/Players/ChampIDImages/AFLW/2026264/1012709.png?im=Scale,width=0.6,height=0.6"
+        }
+      },
+      {
+        "reason": "Injured",
+        "player": {
+          "playerId": "CD_I1021924",
+          "playerName": {
+            "givenName": "Lila",
+            "surname": "Keck"
+          },
+          "captain": false,
+          "playerJumperNumber": null,
+          "photoURL": "https://s.afl.com.au/staticfile/AFL Tenant/AFL/Players/ChampIDImages/AFLW/2026264/1021924.png?im=Scale,width=0.6,height=0.6"
+        }
+      }
+    ]
   },
   "CD_M20262640704:CD_T8788": {
-    "announced": false,
-    "ins": [],
-    "outs": []
+    "announced": true,
+    "ins": [
+      {
+        "reason": null,
+        "player": {
+          "playerId": "CD_I1007327",
+          "playerName": {
+            "givenName": "Montana",
+            "surname": "McKinnon"
+          },
+          "captain": false,
+          "playerJumperNumber": 10,
+          "photoURL": "https://s.afl.com.au/staticfile/AFL Tenant/AFL/Players/ChampIDImages/AFLW/2026264/1007327.png?im=Scale,width=0.6,height=0.6"
+        }
+      },
+      {
+        "reason": null,
+        "player": {
+          "playerId": "CD_I1019762",
+          "playerName": {
+            "givenName": "Paige",
+            "surname": "Scott"
+          },
+          "captain": false,
+          "playerJumperNumber": 5,
+          "photoURL": "https://s.afl.com.au/staticfile/AFL Tenant/AFL/Players/ChampIDImages/AFLW/2026264/1019762.png?im=Scale,width=0.6,height=0.6"
+        }
+      },
+      {
+        "reason": null,
+        "player": {
+          "playerId": "CD_I1048495",
+          "playerName": {
+            "givenName": "Ana",
+            "surname": "Mulholland"
+          },
+          "captain": false,
+          "playerJumperNumber": 26,
+          "photoURL": "https://s.afl.com.au/staticfile/AFL Tenant/AFL/Players/ChampIDImages/AFLW/2026264/1048495.png?im=Scale,width=0.6,height=0.6"
+        }
+      }
+    ],
+    "outs": [
+      {
+        "reason": "Omitted",
+        "player": {
+          "playerId": "CD_I1017023",
+          "playerName": {
+            "givenName": "Rebecca",
+            "surname": "Miller"
+          },
+          "captain": false,
+          "playerJumperNumber": 15,
+          "photoURL": "https://s.afl.com.au/staticfile/AFL Tenant/AFL/Players/ChampIDImages/AFLW/2026264/1017023.png?im=Scale,width=0.6,height=0.6"
+        }
+      },
+      {
+        "reason": "Injured",
+        "player": {
+          "playerId": "CD_I1016865",
+          "playerName": {
+            "givenName": "Poppy",
+            "surname": "Kelly"
+          },
+          "captain": false,
+          "playerJumperNumber": null,
+          "photoURL": "https://s.afl.com.au/staticfile/AFL Tenant/AFL/Players/ChampIDImages/AFLW/2026264/1016865.png?im=Scale,width=0.6,height=0.6"
+        }
+      },
+      {
+        "reason": "Managed",
+        "player": {
+          "playerId": "CD_I1014781",
+          "playerName": {
+            "givenName": "Emelia",
+            "surname": "Yassir"
+          },
+          "captain": false,
+          "playerJumperNumber": null,
+          "photoURL": "https://s.afl.com.au/staticfile/AFL Tenant/AFL/Players/ChampIDImages/AFLW/2026264/1014781.png?im=Scale,width=0.6,height=0.6"
+        }
+      }
+    ]
   },
   "CD_M20262640705:CD_T7386": {
-    "announced": false,
-    "ins": [],
-    "outs": []
+    "announced": true,
+    "ins": [
+      {
+        "reason": null,
+        "player": {
+          "playerId": "CD_I1021828",
+          "playerName": {
+            "givenName": "Alyssia",
+            "surname": "Pisano"
+          },
+          "captain": false,
+          "playerJumperNumber": 3,
+          "photoURL": "https://s.afl.com.au/staticfile/AFL Tenant/AFL/Players/ChampIDImages/AFLW/2026264/1021828.png?im=Scale,width=0.6,height=0.6"
+        }
+      }
+    ],
+    "outs": [
+      {
+        "reason": "Injured",
+        "player": {
+          "playerId": "CD_I1019435",
+          "playerName": {
+            "givenName": "Lauren",
+            "surname": "Clifton"
+          },
+          "captain": false,
+          "playerJumperNumber": null,
+          "photoURL": "https://s.afl.com.au/staticfile/AFL Tenant/AFL/Players/ChampIDImages/AFLW/2026264/1019435.png?im=Scale,width=0.6,height=0.6"
+        }
+      }
+    ]
   },
   "CD_M20262640705:CD_T8466": {
-    "announced": false,
-    "ins": [],
-    "outs": []
+    "announced": true,
+    "ins": [
+      {
+        "reason": null,
+        "player": {
+          "playerId": "CD_I1007157",
+          "playerName": {
+            "givenName": "Libby",
+            "surname": "Birch"
+          },
+          "captain": false,
+          "playerJumperNumber": 2,
+          "photoURL": "https://s.afl.com.au/staticfile/AFL Tenant/AFL/Players/ChampIDImages/AFLW/2026264/1007157.png?im=Scale,width=0.6,height=0.6"
+        }
+      },
+      {
+        "reason": null,
+        "player": {
+          "playerId": "CD_I998150",
+          "playerName": {
+            "givenName": "Emma",
+            "surname": "Kearney"
+          },
+          "captain": false,
+          "playerJumperNumber": 9,
+          "photoURL": "https://s.afl.com.au/staticfile/AFL Tenant/AFL/Players/ChampIDImages/AFLW/2026264/998150.png?im=Scale,width=0.6,height=0.6"
+        }
+      },
+      {
+        "reason": null,
+        "player": {
+          "playerId": "CD_I1007138",
+          "playerName": {
+            "givenName": "Kate",
+            "surname": "Shierlaw"
+          },
+          "captain": false,
+          "playerJumperNumber": 33,
+          "photoURL": "https://s.afl.com.au/staticfile/AFL Tenant/AFL/Players/ChampIDImages/AFLW/2026264/1007138.png?im=Scale,width=0.6,height=0.6"
+        }
+      },
+      {
+        "reason": null,
+        "player": {
+          "playerId": "CD_I1022885",
+          "playerName": {
+            "givenName": "Taylah",
+            "surname": "Gatt"
+          },
+          "captain": false,
+          "playerJumperNumber": 8,
+          "photoURL": "https://s.afl.com.au/staticfile/AFL Tenant/AFL/Players/ChampIDImages/AFLW/2026264/1022885.png?im=Scale,width=0.6,height=0.6"
+        }
+      }
+    ],
+    "outs": [
+      {
+        "reason": "Omitted",
+        "player": {
+          "playerId": "CD_I1031354",
+          "playerName": {
+            "givenName": "Claire",
+            "surname": "Mahony"
+          },
+          "captain": false,
+          "playerJumperNumber": 22,
+          "photoURL": "https://s.afl.com.au/staticfile/AFL Tenant/AFL/Players/ChampIDImages/AFLW/2026264/1031354.png?im=Scale,width=0.6,height=0.6"
+        }
+      },
+      {
+        "reason": "Omitted",
+        "player": {
+          "playerId": "CD_I1014982",
+          "playerName": {
+            "givenName": "Abby",
+            "surname": "Favell"
+          },
+          "captain": false,
+          "playerJumperNumber": 28,
+          "photoURL": "https://s.afl.com.au/staticfile/AFL Tenant/AFL/Players/ChampIDImages/AFLW/2026264/1014982.png?im=Scale,width=0.6,height=0.6"
+        }
+      },
+      {
+        "reason": "Illness",
+        "player": {
+          "playerId": "CD_I1015097",
+          "playerName": {
+            "givenName": "Bella",
+            "surname": "Eddey"
+          },
+          "captain": false,
+          "playerJumperNumber": null,
+          "photoURL": "https://s.afl.com.au/staticfile/AFL Tenant/AFL/Players/ChampIDImages/AFLW/2026264/1015097.png?im=Scale,width=0.6,height=0.6"
+        }
+      },
+      {
+        "reason": "Illness",
+        "player": {
+          "playerId": "CD_I1021879",
+          "playerName": {
+            "givenName": "Kristie-Lee",
+            "surname": "Weston-Turner"
+          },
+          "captain": false,
+          "playerJumperNumber": null,
+          "photoURL": "https://s.afl.com.au/staticfile/AFL Tenant/AFL/Players/ChampIDImages/AFLW/2026264/1021879.png?im=Scale,width=0.6,height=0.6"
+        }
+      }
+    ]
   },
   "CD_M20262640706:CD_T8097": {
-    "announced": false,
-    "ins": [],
+    "announced": true,
+    "ins": [
+      {
+        "reason": null,
+        "player": {
+          "playerId": "CD_I1025615",
+          "playerName": {
+            "givenName": "Charlotte",
+            "surname": "Brewer"
+          },
+          "captain": false,
+          "playerJumperNumber": 20,
+          "photoURL": "https://s.afl.com.au/staticfile/AFL Tenant/AFL/Players/ChampIDImages/AFLW/2026264/1025615.png?im=Scale,width=0.6,height=0.6"
+        }
+      },
+      {
+        "reason": null,
+        "player": {
+          "playerId": "CD_I1003020",
+          "playerName": {
+            "givenName": "Brianna",
+            "surname": "Davey"
+          },
+          "captain": false,
+          "playerJumperNumber": 3,
+          "photoURL": "https://s.afl.com.au/staticfile/AFL Tenant/AFL/Players/ChampIDImages/AFLW/2026264/1003020.png?im=Scale,width=0.6,height=0.6"
+        }
+      },
+      {
+        "reason": null,
+        "player": {
+          "playerId": "CD_I1033496",
+          "playerName": {
+            "givenName": "Amy",
+            "surname": "Smith"
+          },
+          "captain": false,
+          "playerJumperNumber": 28,
+          "photoURL": "https://s.afl.com.au/staticfile/AFL Tenant/AFL/Players/ChampIDImages/AFLW/2026264/1033496.png?im=Scale,width=0.6,height=0.6"
+        }
+      }
+    ],
     "outs": []
   },
   "CD_M20262640706:CD_T7889": {
-    "announced": false,
-    "ins": [],
-    "outs": []
+    "announced": true,
+    "ins": [
+      {
+        "reason": null,
+        "player": {
+          "playerId": "CD_I1032569",
+          "playerName": {
+            "givenName": "Kiera",
+            "surname": "Yerbury"
+          },
+          "captain": false,
+          "playerJumperNumber": 4,
+          "photoURL": "https://s.afl.com.au/staticfile/AFL Tenant/AFL/Players/ChampIDImages/AFLW/2026264/1032569.png?im=Scale,width=0.6,height=0.6"
+        }
+      },
+      {
+        "reason": null,
+        "player": {
+          "playerId": "CD_I1048789",
+          "playerName": {
+            "givenName": "Maisy",
+            "surname": "Evans"
+          },
+          "captain": false,
+          "playerJumperNumber": 26,
+          "photoURL": "https://s.afl.com.au/staticfile/AFL Tenant/AFL/Players/ChampIDImages/AFLW/2026264/1048789.png?im=Scale,width=0.6,height=0.6"
+        }
+      },
+      {
+        "reason": null,
+        "player": {
+          "playerId": "CD_I1009875",
+          "playerName": {
+            "givenName": "Eleanor",
+            "surname": "Brown"
+          },
+          "captain": false,
+          "playerJumperNumber": 8,
+          "photoURL": "https://s.afl.com.au/staticfile/AFL Tenant/AFL/Players/ChampIDImages/AFLW/2026264/1009875.png?im=Scale,width=0.6,height=0.6"
+        }
+      },
+      {
+        "reason": null,
+        "player": {
+          "playerId": "CD_I1032545",
+          "playerName": {
+            "givenName": "Sophia",
+            "surname": "Gaukrodger"
+          },
+          "captain": false,
+          "playerJumperNumber": 19,
+          "photoURL": "https://s.afl.com.au/staticfile/AFL Tenant/AFL/Players/ChampIDImages/AFLW/2026264/1032545.png?im=Scale,width=0.6,height=0.6"
+        }
+      }
+    ],
+    "outs": [
+      {
+        "reason": "Injured",
+        "player": {
+          "playerId": "CD_I1025924",
+          "playerName": {
+            "givenName": "Grace",
+            "surname": "Martin"
+          },
+          "captain": false,
+          "playerJumperNumber": null,
+          "photoURL": "https://s.afl.com.au/staticfile/AFL Tenant/AFL/Players/ChampIDImages/AFLW/2026264/1025924.png?im=Scale,width=0.6,height=0.6"
+        }
+      }
+    ]
   },
   "CD_M20262640707:CD_T8098": {
     "announced": false,
