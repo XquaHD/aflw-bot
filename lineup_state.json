@@ -1570,19 +1570,6 @@
       {
         "reason": null,
         "player": {
-          "playerId": "CD_I1007138",
-          "playerName": {
-            "givenName": "Kate",
-            "surname": "Shierlaw"
-          },
-          "captain": false,
-          "playerJumperNumber": 33,
-          "photoURL": "https://s.afl.com.au/staticfile/AFL Tenant/AFL/Players/ChampIDImages/AFLW/2026264/1007138.png?im=Scale,width=0.6,height=0.6"
-        }
-      },
-      {
-        "reason": null,
-        "player": {
           "playerId": "CD_I1022885",
           "playerName": {
             "givenName": "Taylah",
@@ -1592,22 +1579,22 @@
           "playerJumperNumber": 8,
           "photoURL": "https://s.afl.com.au/staticfile/AFL Tenant/AFL/Players/ChampIDImages/AFLW/2026264/1022885.png?im=Scale,width=0.6,height=0.6"
         }
+      },
+      {
+        "reason": null,
+        "player": {
+          "playerId": "CD_I1007138",
+          "playerName": {
+            "givenName": "Kate",
+            "surname": "Shierlaw"
+          },
+          "captain": false,
+          "playerJumperNumber": 33,
+          "photoURL": "https://s.afl.com.au/staticfile/AFL Tenant/AFL/Players/ChampIDImages/AFLW/2026264/1007138.png?im=Scale,width=0.6,height=0.6"
+        }
       }
     ],
     "outs": [
-      {
-        "reason": "Omitted",
-        "player": {
-          "playerId": "CD_I1031354",
-          "playerName": {
-            "givenName": "Claire",
-            "surname": "Mahony"
-          },
-          "captain": false,
-          "playerJumperNumber": 22,
-          "photoURL": "https://s.afl.com.au/staticfile/AFL Tenant/AFL/Players/ChampIDImages/AFLW/2026264/1031354.png?im=Scale,width=0.6,height=0.6"
-        }
-      },
       {
         "reason": "Omitted",
         "player": {
@@ -1645,6 +1632,19 @@
           "captain": false,
           "playerJumperNumber": null,
           "photoURL": "https://s.afl.com.au/staticfile/AFL Tenant/AFL/Players/ChampIDImages/AFLW/2026264/1021879.png?im=Scale,width=0.6,height=0.6"
+        }
+      },
+      {
+        "reason": "Injured",
+        "player": {
+          "playerId": "CD_I1013943",
+          "playerName": {
+            "givenName": "Tessa",
+            "surname": "Boyd"
+          },
+          "captain": false,
+          "playerJumperNumber": 24,
+          "photoURL": "https://s.afl.com.au/staticfile/AFL Tenant/AFL/Players/ChampIDImages/AFLW/2026264/1013943.png?im=Scale,width=0.6,height=0.6"
         }
       }
     ]
