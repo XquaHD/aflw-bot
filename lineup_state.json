@@ -1996,7 +1996,7 @@
             "surname": "Friend"
           },
           "captain": false,
-          "playerJumperNumber": 16,
+          "playerJumperNumber": null,
           "photoURL": "https://s.afl.com.au/staticfile/AFL Tenant/AFL/Players/ChampIDImages/AFLW/2026264/1014962.png?im=Scale,width=0.6,height=0.6"
         }
       },
