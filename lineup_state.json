@@ -1851,19 +1851,6 @@
       {
         "reason": null,
         "player": {
-          "playerId": "CD_I1037639",
-          "playerName": {
-            "givenName": "Lily",
-            "surname": "Quigley"
-          },
-          "captain": false,
-          "playerJumperNumber": 35,
-          "photoURL": "https://s.afl.com.au/staticfile/AFL Tenant/AFL/Players/ChampIDImages/AFLW/2026264/1037639.png?im=Scale,width=0.6,height=0.6"
-        }
-      },
-      {
-        "reason": null,
-        "player": {
           "playerId": "CD_I1032495",
           "playerName": {
             "givenName": "Rhianna",
@@ -1872,6 +1859,19 @@
           "captain": false,
           "playerJumperNumber": 27,
           "photoURL": "https://s.afl.com.au/staticfile/AFL Tenant/AFL/Players/ChampIDImages/AFLW/2026264/1032495.png?im=Scale,width=0.6,height=0.6"
+        }
+      },
+      {
+        "reason": null,
+        "player": {
+          "playerId": "CD_I1037639",
+          "playerName": {
+            "givenName": "Lily",
+            "surname": "Quigley"
+          },
+          "captain": false,
+          "playerJumperNumber": 35,
+          "photoURL": "https://s.afl.com.au/staticfile/AFL Tenant/AFL/Players/ChampIDImages/AFLW/2026264/1037639.png?im=Scale,width=0.6,height=0.6"
         }
       }
     ],
