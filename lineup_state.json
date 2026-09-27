@@ -1765,16 +1765,16 @@
         }
       },
       {
-        "reason": "Omitted",
+        "reason": "Injured",
         "player": {
-          "playerId": "CD_I1029623",
+          "playerId": "CD_I1026166",
           "playerName": {
-            "givenName": "Orlagh",
-            "surname": "Lally"
+            "givenName": "Madeleine",
+            "surname": "Scanlon"
           },
           "captain": false,
-          "playerJumperNumber": 14,
-          "photoURL": "https://s.afl.com.au/staticfile/AFL Tenant/AFL/Players/ChampIDImages/AFLW/2026264/1029623.png?im=Scale,width=0.6,height=0.6"
+          "playerJumperNumber": 6,
+          "photoURL": "https://s.afl.com.au/staticfile/AFL Tenant/AFL/Players/ChampIDImages/AFLW/2026264/1026166.png?im=Scale,width=0.6,height=0.6"
         }
       }
     ]
