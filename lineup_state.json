@@ -1831,16 +1831,16 @@
     ],
     "outs": [
       {
-        "reason": "Omitted",
+        "reason": "Injured",
         "player": {
-          "playerId": "CD_I1026937",
+          "playerId": "CD_I1029938",
           "playerName": {
-            "givenName": "Rania",
-            "surname": "Crozier"
+            "givenName": "Marlo",
+            "surname": "Graham"
           },
           "captain": false,
-          "playerJumperNumber": 23,
-          "photoURL": "https://s.afl.com.au/staticfile/AFL Tenant/AFL/Players/ChampIDImages/AFLW/2026264/1026937.png?im=Scale,width=0.6,height=0.6"
+          "playerJumperNumber": 30,
+          "photoURL": "https://s.afl.com.au/staticfile/AFL Tenant/AFL/Players/ChampIDImages/AFLW/2026264/1029938.png?im=Scale,width=0.6,height=0.6"
         }
       }
     ]
