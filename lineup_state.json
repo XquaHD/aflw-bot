@@ -2016,14 +2016,96 @@
     ]
   },
   "CD_M20262640801:CD_T8096": {
-    "announced": false,
-    "ins": [],
-    "outs": []
+    "announced": true,
+    "ins": [
+      {
+        "reason": null,
+        "player": {
+          "playerId": "CD_I1007026",
+          "playerName": {
+            "givenName": "Gabriella",
+            "surname": "Pound"
+          },
+          "captain": false,
+          "playerJumperNumber": 6,
+          "photoURL": "https://s.afl.com.au/staticfile/AFL Tenant/AFL/Players/ChampIDImages/AFLW/2026264/1007026.png?im=Scale,width=0.6,height=0.6"
+        }
+      }
+    ],
+    "outs": [
+      {
+        "reason": "Managed",
+        "player": {
+          "playerId": "CD_I1019887",
+          "playerName": {
+            "givenName": "Amelia",
+            "surname": "Velardo"
+          },
+          "captain": false,
+          "playerJumperNumber": null,
+          "photoURL": "https://s.afl.com.au/staticfile/AFL Tenant/AFL/Players/ChampIDImages/AFLW/2026264/1019887.png?im=Scale,width=0.6,height=0.6"
+        }
+      }
+    ]
   },
   "CD_M20262640801:CD_T9407": {
-    "announced": false,
-    "ins": [],
-    "outs": []
+    "announced": true,
+    "ins": [
+      {
+        "reason": null,
+        "player": {
+          "playerId": "CD_I1037024",
+          "playerName": {
+            "givenName": "Lavinia",
+            "surname": "Cox"
+          },
+          "captain": false,
+          "playerJumperNumber": 8,
+          "photoURL": "https://s.afl.com.au/staticfile/AFL Tenant/AFL/Players/ChampIDImages/AFLW/2026264/1037024.png?im=Scale,width=0.6,height=0.6"
+        }
+      },
+      {
+        "reason": null,
+        "player": {
+          "playerId": "CD_I1019035",
+          "playerName": {
+            "givenName": "Greta",
+            "surname": "Bodey"
+          },
+          "captain": false,
+          "playerJumperNumber": 3,
+          "photoURL": "https://s.afl.com.au/staticfile/AFL Tenant/AFL/Players/ChampIDImages/AFLW/2026264/1019035.png?im=Scale,width=0.6,height=0.6"
+        }
+      }
+    ],
+    "outs": [
+      {
+        "reason": "Omitted",
+        "player": {
+          "playerId": "CD_I1019828",
+          "playerName": {
+            "givenName": "Keely",
+            "surname": "Coyne"
+          },
+          "captain": false,
+          "playerJumperNumber": 9,
+          "photoURL": "https://s.afl.com.au/staticfile/AFL Tenant/AFL/Players/ChampIDImages/AFLW/2026264/1019828.png?im=Scale,width=0.6,height=0.6"
+        }
+      },
+      {
+        "reason": "Omitted",
+        "player": {
+          "playerId": "CD_I1019830",
+          "playerName": {
+            "givenName": "Bridie",
+            "surname": "Hipwell"
+          },
+          "captain": false,
+          "playerJumperNumber": 19,
+          "photoURL": "https://s.afl.com.au/staticfile/AFL Tenant/AFL/Players/ChampIDImages/AFLW/2026264/1019830.png?im=Scale,width=0.6,height=0.6"
+        }
+      }
+    ]
   },
   "CD_M20262640802:CD_T8788": {
     "announced": false,
