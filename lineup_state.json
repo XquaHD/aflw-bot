@@ -2689,19 +2689,6 @@
       {
         "reason": null,
         "player": {
-          "playerId": "CD_I1026412",
-          "playerName": {
-            "givenName": "Olivia",
-            "surname": "Crane"
-          },
-          "captain": false,
-          "playerJumperNumber": 19,
-          "photoURL": "https://s.afl.com.au/staticfile/AFL Tenant/AFL/Players/ChampIDImages/AFLW/2026264/1026412.png?im=Scale,width=0.6,height=0.6"
-        }
-      },
-      {
-        "reason": null,
-        "player": {
           "playerId": "CD_I1025893",
           "playerName": {
             "givenName": "Ella",
@@ -2723,6 +2710,19 @@
           "captain": false,
           "playerJumperNumber": 44,
           "photoURL": "https://s.afl.com.au/staticfile/AFL Tenant/AFL/Players/ChampIDImages/AFLW/2026264/1019509.png?im=Scale,width=0.6,height=0.6"
+        }
+      },
+      {
+        "reason": null,
+        "player": {
+          "playerId": "CD_I1026412",
+          "playerName": {
+            "givenName": "Olivia",
+            "surname": "Crane"
+          },
+          "captain": false,
+          "playerJumperNumber": 19,
+          "photoURL": "https://s.afl.com.au/staticfile/AFL Tenant/AFL/Players/ChampIDImages/AFLW/2026264/1026412.png?im=Scale,width=0.6,height=0.6"
         }
       }
     ],
@@ -2774,19 +2774,6 @@
       {
         "reason": null,
         "player": {
-          "playerId": "CD_I1040489",
-          "playerName": {
-            "givenName": "Alice",
-            "surname": "Tentye"
-          },
-          "captain": false,
-          "playerJumperNumber": 31,
-          "photoURL": "https://s.afl.com.au/staticfile/AFL Tenant/AFL/Players/ChampIDImages/AFLW/2026264/1040489.png?im=Scale,width=0.6,height=0.6"
-        }
-      },
-      {
-        "reason": null,
-        "player": {
           "playerId": "CD_I1019431",
           "playerName": {
             "givenName": "Brooke",
@@ -2795,6 +2782,19 @@
           "captain": false,
           "playerJumperNumber": 28,
           "photoURL": "https://s.afl.com.au/staticfile/AFL Tenant/AFL/Players/ChampIDImages/AFLW/2026264/1019431.png?im=Scale,width=0.6,height=0.6"
+        }
+      },
+      {
+        "reason": null,
+        "player": {
+          "playerId": "CD_I1040489",
+          "playerName": {
+            "givenName": "Alice",
+            "surname": "Tentye"
+          },
+          "captain": false,
+          "playerJumperNumber": 31,
+          "photoURL": "https://s.afl.com.au/staticfile/AFL Tenant/AFL/Players/ChampIDImages/AFLW/2026264/1040489.png?im=Scale,width=0.6,height=0.6"
         }
       }
     ],
