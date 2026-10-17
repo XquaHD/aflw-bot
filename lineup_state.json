@@ -4245,19 +4245,6 @@
     ],
     "outs": [
       {
-        "reason": "Omitted",
-        "player": {
-          "playerId": "CD_I1023857",
-          "playerName": {
-            "givenName": "Georgie",
-            "surname": "Cleaver"
-          },
-          "captain": false,
-          "playerJumperNumber": 22,
-          "photoURL": "https://s.afl.com.au/staticfile/AFL Tenant/AFL/Players/ChampIDImages/AFLW/2026264/1023857.png?im=Scale,width=0.6,height=0.6"
-        }
-      },
-      {
         "reason": "Personal Reason",
         "player": {
           "playerId": "CD_I1021411",
@@ -4268,6 +4255,19 @@
           "captain": false,
           "playerJumperNumber": null,
           "photoURL": "https://s.afl.com.au/staticfile/AFL Tenant/AFL/Players/ChampIDImages/AFLW/2026264/1021411.png?im=Scale,width=0.6,height=0.6"
+        }
+      },
+      {
+        "reason": "Illness",
+        "player": {
+          "playerId": "CD_I1021416",
+          "playerName": {
+            "givenName": "Beth",
+            "surname": "Schilling"
+          },
+          "captain": false,
+          "playerJumperNumber": 30,
+          "photoURL": "https://s.afl.com.au/staticfile/AFL Tenant/AFL/Players/ChampIDImages/AFLW/2026264/1021416.png?im=Scale,width=0.6,height=0.6"
         }
       }
     ]
