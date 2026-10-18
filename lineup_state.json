@@ -4554,6 +4554,19 @@
       {
         "reason": null,
         "player": {
+          "playerId": "CD_I1014982",
+          "playerName": {
+            "givenName": "Abby",
+            "surname": "Favell"
+          },
+          "captain": false,
+          "playerJumperNumber": 28,
+          "photoURL": "https://s.afl.com.au/staticfile/AFL Tenant/AFL/Players/ChampIDImages/AFLW/2026264/1014982.png?im=Scale,width=0.6,height=0.6"
+        }
+      },
+      {
+        "reason": null,
+        "player": {
           "playerId": "CD_I1021879",
           "playerName": {
             "givenName": "Kristie-Lee",
@@ -4603,6 +4616,19 @@
           "captain": false,
           "playerJumperNumber": null,
           "photoURL": "https://s.afl.com.au/staticfile/AFL Tenant/AFL/Players/ChampIDImages/AFLW/2026264/1007138.png?im=Scale,width=0.6,height=0.6"
+        }
+      },
+      {
+        "reason": "Injured",
+        "player": {
+          "playerId": "CD_I1031354",
+          "playerName": {
+            "givenName": "Claire",
+            "surname": "Mahony"
+          },
+          "captain": false,
+          "playerJumperNumber": 22,
+          "photoURL": "https://s.afl.com.au/staticfile/AFL Tenant/AFL/Players/ChampIDImages/AFLW/2026264/1031354.png?im=Scale,width=0.6,height=0.6"
         }
       }
     ]
