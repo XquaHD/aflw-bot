@@ -4731,19 +4731,6 @@
       {
         "reason": null,
         "player": {
-          "playerId": "CD_I1005955",
-          "playerName": {
-            "givenName": "Justine",
-            "surname": "Mules-Robinson"
-          },
-          "captain": false,
-          "playerJumperNumber": 1,
-          "photoURL": "https://s.afl.com.au/staticfile/AFL Tenant/AFL/Players/ChampIDImages/AFLW/2026264/1005955.png?im=Scale,width=0.6,height=0.6"
-        }
-      },
-      {
-        "reason": null,
-        "player": {
           "playerId": "CD_I1023952",
           "playerName": {
             "givenName": "Lucy",
@@ -4765,6 +4752,19 @@
           "captain": false,
           "playerJumperNumber": 25,
           "photoURL": "https://s.afl.com.au/staticfile/AFL Tenant/AFL/Players/ChampIDImages/AFLW/2026264/1032555.png?im=Scale,width=0.6,height=0.6"
+        }
+      },
+      {
+        "reason": null,
+        "player": {
+          "playerId": "CD_I1005955",
+          "playerName": {
+            "givenName": "Justine",
+            "surname": "Mules-Robinson"
+          },
+          "captain": false,
+          "playerJumperNumber": 1,
+          "photoURL": "https://s.afl.com.au/staticfile/AFL Tenant/AFL/Players/ChampIDImages/AFLW/2026264/1005955.png?im=Scale,width=0.6,height=0.6"
         }
       }
     ],
