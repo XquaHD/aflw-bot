@@ -4875,19 +4875,6 @@
       {
         "reason": null,
         "player": {
-          "playerId": "CD_I1014962",
-          "playerName": {
-            "givenName": "Ella",
-            "surname": "Friend"
-          },
-          "captain": false,
-          "playerJumperNumber": 16,
-          "photoURL": "https://s.afl.com.au/staticfile/AFL Tenant/AFL/Players/ChampIDImages/AFLW/2026264/1014962.png?im=Scale,width=0.6,height=0.6"
-        }
-      },
-      {
-        "reason": null,
-        "player": {
           "playerId": "CD_I1021367",
           "playerName": {
             "givenName": "J'Noemi",
@@ -4909,6 +4896,19 @@
           "captain": false,
           "playerJumperNumber": 19,
           "photoURL": "https://s.afl.com.au/staticfile/AFL Tenant/AFL/Players/ChampIDImages/AFLW/2026264/1009866.png?im=Scale,width=0.6,height=0.6"
+        }
+      },
+      {
+        "reason": null,
+        "player": {
+          "playerId": "CD_I1014962",
+          "playerName": {
+            "givenName": "Ella",
+            "surname": "Friend"
+          },
+          "captain": false,
+          "playerJumperNumber": 16,
+          "photoURL": "https://s.afl.com.au/staticfile/AFL Tenant/AFL/Players/ChampIDImages/AFLW/2026264/1014962.png?im=Scale,width=0.6,height=0.6"
         }
       }
     ],
