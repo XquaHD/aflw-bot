@@ -5300,6 +5300,19 @@
       {
         "reason": null,
         "player": {
+          "playerId": "CD_I1009907",
+          "playerName": {
+            "givenName": "Roxanne",
+            "surname": "Roux"
+          },
+          "captain": false,
+          "playerJumperNumber": 9,
+          "photoURL": "https://s.afl.com.au/staticfile/AFL Tenant/AFL/Players/ChampIDImages/AFLW/2026264/1009907.png?im=Scale,width=0.6,height=0.6"
+        }
+      },
+      {
+        "reason": null,
+        "player": {
           "playerId": "CD_I1032980",
           "playerName": {
             "givenName": "Jovie",
@@ -5321,19 +5334,6 @@
           "captain": false,
           "playerJumperNumber": 19,
           "photoURL": "https://s.afl.com.au/staticfile/AFL Tenant/AFL/Players/ChampIDImages/AFLW/2026264/1021411.png?im=Scale,width=0.6,height=0.6"
-        }
-      },
-      {
-        "reason": null,
-        "player": {
-          "playerId": "CD_I1009907",
-          "playerName": {
-            "givenName": "Roxanne",
-            "surname": "Roux"
-          },
-          "captain": false,
-          "playerJumperNumber": 9,
-          "photoURL": "https://s.afl.com.au/staticfile/AFL Tenant/AFL/Players/ChampIDImages/AFLW/2026264/1009907.png?im=Scale,width=0.6,height=0.6"
         }
       }
     ],
