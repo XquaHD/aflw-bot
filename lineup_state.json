@@ -6562,6 +6562,19 @@
       {
         "reason": null,
         "player": {
+          "playerId": "CD_I1021845",
+          "playerName": {
+            "givenName": "Jacinta",
+            "surname": "Hose"
+          },
+          "captain": false,
+          "playerJumperNumber": 25,
+          "photoURL": "https://s.afl.com.au/staticfile/AFL Tenant/AFL/Players/ChampIDImages/AFLW/2026264/1021845.png?im=Scale,width=0.6,height=0.6"
+        }
+      },
+      {
+        "reason": null,
+        "player": {
           "playerId": "CD_I1029628",
           "playerName": {
             "givenName": "Saraid",
@@ -6611,6 +6624,19 @@
           "captain": false,
           "playerJumperNumber": null,
           "photoURL": "https://s.afl.com.au/staticfile/AFL Tenant/AFL/Players/ChampIDImages/AFLW/2026264/1012713.png?im=Scale,width=0.6,height=0.6"
+        }
+      },
+      {
+        "reason": "Illness",
+        "player": {
+          "playerId": "CD_I1019713",
+          "playerName": {
+            "givenName": "Georgia",
+            "surname": "Campbell"
+          },
+          "captain": false,
+          "playerJumperNumber": null,
+          "photoURL": "https://s.afl.com.au/staticfile/AFL Tenant/AFL/Players/ChampIDImages/AFLW/2026264/1019713.png?im=Scale,width=0.6,height=0.6"
         }
       }
     ]
