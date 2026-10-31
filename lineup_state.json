@@ -5840,19 +5840,6 @@
       {
         "reason": null,
         "player": {
-          "playerId": "CD_I1025415",
-          "playerName": {
-            "givenName": "Chelsea",
-            "surname": "Sutton"
-          },
-          "captain": false,
-          "playerJumperNumber": 36,
-          "photoURL": "https://s.afl.com.au/staticfile/AFL Tenant/AFL/Players/ChampIDImages/AFLW/2026264/1025415.png?im=Scale,width=0.6,height=0.6"
-        }
-      },
-      {
-        "reason": null,
-        "player": {
           "playerId": "CD_I1009838",
           "playerName": {
             "givenName": "Jesse",
@@ -5861,6 +5848,19 @@
           "captain": false,
           "playerJumperNumber": 30,
           "photoURL": "https://s.afl.com.au/staticfile/AFL Tenant/AFL/Players/ChampIDImages/AFLW/2026264/1009838.png?im=Scale,width=0.6,height=0.6"
+        }
+      },
+      {
+        "reason": null,
+        "player": {
+          "playerId": "CD_I1025415",
+          "playerName": {
+            "givenName": "Chelsea",
+            "surname": "Sutton"
+          },
+          "captain": false,
+          "playerJumperNumber": 36,
+          "photoURL": "https://s.afl.com.au/staticfile/AFL Tenant/AFL/Players/ChampIDImages/AFLW/2026264/1025415.png?im=Scale,width=0.6,height=0.6"
         }
       }
     ],
