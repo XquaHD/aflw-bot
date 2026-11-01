@@ -6642,6 +6642,19 @@
       {
         "reason": null,
         "player": {
+          "playerId": "CD_I1021828",
+          "playerName": {
+            "givenName": "Alyssia",
+            "surname": "Pisano"
+          },
+          "captain": false,
+          "playerJumperNumber": 3,
+          "photoURL": "https://s.afl.com.au/staticfile/AFL Tenant/AFL/Players/ChampIDImages/AFLW/2026264/1021828.png?im=Scale,width=0.6,height=0.6"
+        }
+      },
+      {
+        "reason": null,
+        "player": {
           "playerId": "CD_I1021845",
           "playerName": {
             "givenName": "Jacinta",
@@ -6717,6 +6730,19 @@
           "captain": false,
           "playerJumperNumber": 2,
           "photoURL": "https://s.afl.com.au/staticfile/AFL Tenant/AFL/Players/ChampIDImages/AFLW/2026264/1009861.png?im=Scale,width=0.6,height=0.6"
+        }
+      },
+      {
+        "reason": "Injured",
+        "player": {
+          "playerId": "CD_I998149",
+          "playerName": {
+            "givenName": "Paxy",
+            "surname": "Paxman"
+          },
+          "captain": false,
+          "playerJumperNumber": 4,
+          "photoURL": "https://s.afl.com.au/staticfile/AFL Tenant/AFL/Players/ChampIDImages/AFLW/2026264/998149.png?im=Scale,width=0.6,height=0.6"
         }
       }
     ]
