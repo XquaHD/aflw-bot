@@ -7428,19 +7428,6 @@
       {
         "reason": null,
         "player": {
-          "playerId": "CD_I1021924",
-          "playerName": {
-            "givenName": "Lila",
-            "surname": "Keck"
-          },
-          "captain": false,
-          "playerJumperNumber": 23,
-          "photoURL": "https://s.afl.com.au/staticfile/AFL Tenant/AFL/Players/ChampIDImages/AFLW/2026264/1021924.png?im=Scale,width=0.6,height=0.6"
-        }
-      },
-      {
-        "reason": null,
-        "player": {
           "playerId": "CD_I1012709",
           "playerName": {
             "givenName": "Tara",
@@ -7450,22 +7437,22 @@
           "playerJumperNumber": 42,
           "photoURL": "https://s.afl.com.au/staticfile/AFL Tenant/AFL/Players/ChampIDImages/AFLW/2026264/1012709.png?im=Scale,width=0.6,height=0.6"
         }
+      },
+      {
+        "reason": null,
+        "player": {
+          "playerId": "CD_I1021924",
+          "playerName": {
+            "givenName": "Lila",
+            "surname": "Keck"
+          },
+          "captain": false,
+          "playerJumperNumber": 23,
+          "photoURL": "https://s.afl.com.au/staticfile/AFL Tenant/AFL/Players/ChampIDImages/AFLW/2026264/1021924.png?im=Scale,width=0.6,height=0.6"
+        }
       }
     ],
     "outs": [
-      {
-        "reason": "Omitted",
-        "player": {
-          "playerId": "CD_I1007026",
-          "playerName": {
-            "givenName": "Gabriella",
-            "surname": "Pound"
-          },
-          "captain": false,
-          "playerJumperNumber": 6,
-          "photoURL": "https://s.afl.com.au/staticfile/AFL Tenant/AFL/Players/ChampIDImages/AFLW/2026264/1007026.png?im=Scale,width=0.6,height=0.6"
-        }
-      },
       {
         "reason": "Omitted",
         "player": {
@@ -7490,6 +7477,19 @@
           "captain": false,
           "playerJumperNumber": 26,
           "photoURL": "https://s.afl.com.au/staticfile/AFL Tenant/AFL/Players/ChampIDImages/AFLW/2026264/1032580.png?im=Scale,width=0.6,height=0.6"
+        }
+      },
+      {
+        "reason": "Injured",
+        "player": {
+          "playerId": "CD_I1014373",
+          "playerName": {
+            "givenName": "Ciara",
+            "surname": "Fitzgerald"
+          },
+          "captain": false,
+          "playerJumperNumber": 36,
+          "photoURL": "https://s.afl.com.au/staticfile/AFL Tenant/AFL/Players/ChampIDImages/AFLW/2026264/1014373.png?im=Scale,width=0.6,height=0.6"
         }
       }
     ]
